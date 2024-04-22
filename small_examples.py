@@ -2,7 +2,6 @@ from typing import List
 
 def getMaxAdditionalDinersCount(N: int, K: int, M: int, S: List[int]) -> int:
   new_guests = 0
-  count_between_guest = 0
   S.append(N + 1)
   seats = sorted(S)
   prev_seat = 0
