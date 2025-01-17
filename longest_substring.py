@@ -39,9 +39,6 @@ def main():
     instance.gcdOfStrings("ABABAB", "ABAB")
     print(tracemalloc.get_traced_memory())
     tracemalloc.stop()
-    # instance.gcdOfStrings("ABCABC", "ABC")
-    # instance.gcdOfStrings("ABCDEF", "ABC")
-    # instance.gcdOfStrings("AAAAAAAAA", "AAACCC")
 
 
 if __name__ == "__main__":
