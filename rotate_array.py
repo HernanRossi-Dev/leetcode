@@ -107,7 +107,7 @@ class SolutionSimple:
     def rotate(self, nums: List[int], k: int) -> None:
         """Do not return anything, modify nums in-place instead."""
         if len(nums) < 2:
-            return nums
+            return
         if k > len(nums):
             k = k - len(nums)
         self._nums = nums
