@@ -98,36 +98,26 @@ class SolutionSimple:
         if self._pointer >= len(self._nums):
             self._pointer = value - len(self._nums)
 
-    def do_swaps(self, n: int, m: int) -> None:
-        print(f"Swapping locations {n} <-> {m}")
-        temp = self._nums[n]
-        self._nums[n] = self._nums[m]
-        self._nums[m] = temp
-
     def rotate(self, nums: List[int], k: int) -> None:
-        """Do not return anything, modify nums in-place instead."""
         if len(nums) < 2:
             return
-        if k > len(nums):
+        while k > len(nums):
             k = k - len(nums)
         self._nums = nums
         self.set_pointer(0)
-        current_item = start = self._nums[self.pointer]
-        # print(f'Starting state: {current_item} {start}: {k=} {len(nums)}')
-
+        start_index = 0
+        current_item = self._nums[self.pointer]
+        self._nums[0] = None
         for _ in nums:
-            # set pointer to target
             self.set_pointer(self.pointer + k)
             next_item = self._nums[self.pointer]
-            print(f'Moving current: {current_item} to location: {self.pointer}, picking up next: {next_item}')
             self._nums[self.pointer] = current_item
-            current_item = next_item
-            if next_item == start:
+            if next_item is None:
                 self.set_pointer(self.pointer + 1)
-                current_item = self._nums[self.pointer]
-                start = current_item
-
-
+                next_item = self._nums[self.pointer]
+                self._nums[self.pointer] = None
+            current_item = next_item
+        self._nums[self.pointer] = current_item
 
 def main():
     nums = [1, 2, 3]
