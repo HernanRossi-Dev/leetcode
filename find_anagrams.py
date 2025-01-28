@@ -1,7 +1,7 @@
 import string
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import List, Dict
+from typing import List, Dict, Tuple
 
 # A map of the letter in the alphabet to its position in our 25 length list
 CHAR_MAP = {c: i for (i, c) in enumerate(list(string.ascii_lowercase))}
@@ -44,7 +44,7 @@ class Solution:
             result.extend(self.recursive_check(sub_map, char_index + 1))
         return result
 
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+    def groupAnagramsRecursive(self, strs: List[str]) -> List[List[str]]:
         self._input_list = strs
         index_list_map: Dict[int, List[int]] = {}
         # enumerate all the input strings and map it to its index in the input list
@@ -59,69 +59,20 @@ class Solution:
         final_result = [group.anagrams for group in anagram_groups]
         return final_result
 
-    # def groupAnagramsOld(self, strs: List[str]) -> List[List[str]]:
-    #     grouped_return: List[List[str]] = []
-    #     ascii_map: Dict[int, List[str]] = dict()
-    #     for word in strs:
-    #         ascii_values = [ord(c) for c in word]
-    #         total = sum(ascii_values)
-    #         entry = ascii_map.get(total, [])
-    #         entry.append(word)
-    #         ascii_map[total] = entry
-    #     # now that we have broken the problem down to just checking
-    #     # strings that have the same ord value
-    #     print(ascii_map)
-    #     for sub_list in ascii_map.values():
-    #         if len(sub_list) == 1:
-    #             grouped_return.append(sub_list)
-    #         else:
-    #         # For each sublist make sure that they are in fact anagrams
-    #             """
-    #             TODO for each sub list go through it an verify that each item in
-    #             For each string in the list make a grid to trach the counts of each
-    #             character in the string and each count of that character int he string
-    #             from a-z for each column for a constant 25 columns and a row for each string for an
-    #             mx25 where m is the number of string
-    #             This can be a recursive function where any matching string will go to the next call
-    #             of the function and that function will break all the colums up depending on if they match in the
-    #             next character or not
-    #             for i in range(25):
-    #                 if row[i]
-    #              a - z
-    #             1[   [2, 0, 3,...]
-    #             -     [1, 2, 0,...]
-    #                   [2, 1, 3,...]]
-    #             m
-    #             create a bucket map for each occurence to the sublist to send to the next check
-    #             if a list only has one return it
-    #             {2: [l1, l3], 6: [l2]}
-    #             """
-
-    #             while sub_list:
-    #                 matching = []
-    #                 non_matching = []
-    #                 possible_match = []
-    #                 char_map: Dict[str, int] = dict()
-    #                 template_str = sub_list.pop(0)
-    #                 matching.append(template_str)
-    #                 # Slit the problem again from string of the same length with the template string the non matching will go through this loop again.
-    #                 for string in sub_list:
-    #                     if len(string) != sub_list:
-    #                         non_matching.append(string)
-    #                     else:
-    #                         possible_match.append(string)
-    #                 for char in template_str:
-    #                     char_map[char] = char_map.get(char, 0) + 1
-    #                 string_index_list = [idx for idx in len(sub_list)]
-    #                 # [0 , 1, 2, 3]
-    #                 char_idx_list = [idx for idx in template_str]
-    #                 # [0 , 1, 2, 3, 4]
-    #                 for
-    #                 # we will use this list of character index to compare all
-    #                 # lists at once with the template string, the hope is they
-    #                 # all match the ones that do add to the template strings
-    #                 # result array and start again with the remaining strings
-    #                     check = sub_list[0]
-    #                     for char in check:
-    #     return ascii_map.values()
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        pair_map: Dict[Tuple, List[str]] = dict()
+        # enumerate all the input strings and map it to its index in the input list
+        for c_string in strs:
+            # this is a 25 length list for each letter in the alphabet initialize the char count list to 0
+            count_list: List[int] = [0 for _ in range(26)]
+            for char in c_string:
+                count_list[CHAR_MAP[char]] = count_list[CHAR_MAP[char]] + 1
+            # we now have a dict from index in input string to list of char counts
+            tuple_list = tuple(count_list)
+            if anagrams := pair_map.get(tuple_list):
+                anagrams.append(c_string)
+            else:
+                anagrams = [c_string]
+            pair_map[tuple_list] = anagrams
+        return list(pair_map.values())
 
