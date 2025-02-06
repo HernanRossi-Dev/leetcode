@@ -70,15 +70,20 @@ class TestNumberOfIslands(unittest.TestCase):
     def setUp(self):
         self.instance = NumberOfIslands()
 
-    def test_odd_number(self):
+    def test_one_island(self):
         test = [["1","1","1","1","0"],["1","1","0","1","0"],["1","1","0","0","0"],["0","0","0","0","0"]]
         result = self.instance.num_islands(test)
         self.assertEqual(result, 1)
 
-    def test_even_number(self):
+    def test_three_islands(self):
         test = [["1","1","0","0","0"],["1","1","0","0","0"],["0","0","1","0","0"],["0","0","0","1","1"]]
         result = self.instance.num_islands(test)
         self.assertEqual(result, 3)
+
+    def test_four_islands(self):
+        test = [["1","1","0","0","1"],["1","1","0","0","1"],["0","0","1","0","0"],["0","0","0","1","1"]]
+        result = self.instance.num_islands(test)
+        self.assertEqual(result, 4)
 
 
 if __name__ == '__main__':
