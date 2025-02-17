@@ -1,7 +1,7 @@
 import string
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import List, Dict, Tuple
+from typing import Dict, List, Tuple
 
 # A map of the letter in the alphabet to its position in our 25 length list
 CHAR_MAP = {c: i for (i, c) in enumerate(list(string.ascii_lowercase))}
