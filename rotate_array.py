@@ -1,5 +1,6 @@
 from typing import Callable, List
 
+
 class SolutionComplex:
     _pointer_1: int = 0
     _pointer_2: int = 0
@@ -20,17 +21,17 @@ class SolutionComplex:
         self._pointer_2 = value
 
     def increment_pointers(self) -> None:
-        print('Incrementing Pointers')
+        print("Incrementing Pointers")
         self._pointer_1 += 1
         self._pointer_2 += 1
 
     def converge_pointers(self) -> None:
-        print('Converging Pointers')
+        print("Converging Pointers")
         self._pointer_1 += 1
         self._pointer_2 -= 1
 
     def increment_one(self) -> None:
-        print('Increment Pointer 1')
+        print("Increment Pointer 1")
         self._pointer_1 += 1
 
     def do_swaps(self, alter_pointer_fun: Callable) -> None:
@@ -39,7 +40,7 @@ class SolutionComplex:
         self._nums[self.pointer_1] = self._nums[self.pointer_2]
         self._nums[self.pointer_2] = temp
         alter_pointer_fun()
-        print(f'Completed swap: {self._nums}')
+        print(f"Completed swap: {self._nums}")
 
     def rotate(self, nums: List[int], k: int) -> None:
         """Do not return anything, modify nums in-place instead."""
@@ -85,6 +86,7 @@ class SolutionComplex:
                     nums[self.pointer_1] = right
                 return
 
+
 class SolutionSimple:
     _pointer: int = 0
     _nums: List[int] = list()
@@ -119,6 +121,7 @@ class SolutionSimple:
             current_item = next_item
         self._nums[self.pointer] = current_item
 
+
 def main():
     nums = [1, 2, 3]
     k = 1
@@ -127,5 +130,5 @@ def main():
     test.rotate(nums, k)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

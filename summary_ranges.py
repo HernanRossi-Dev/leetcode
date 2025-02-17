@@ -6,9 +6,9 @@ class Solution:
 
     def print_entry(self, current: int, current_min: int, result: List[str]) -> None:
         if current == current_min:
-            result.append(f'{current}')
+            result.append(f"{current}")
         else:
-            result.append(f'{current_min}->{current}')
+            result.append(f"{current_min}->{current}")
 
     def summary_ranges(self, nums: List[int]) -> List[str]:
         if not nums:
@@ -40,5 +40,5 @@ class TestSummaryRanges(unittest.TestCase):
         self.assertEqual(result, ["0->2", "4->5", "7->8"])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

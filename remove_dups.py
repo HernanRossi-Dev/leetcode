@@ -15,7 +15,7 @@ class Solution:
                     nums[pointer] = current
                     pointer += 1
                 else:
-                    print(f'Maximum Duplicates saved to list for value {current}')
+                    print(f"Maximum Duplicates saved to list for value {current}")
             else:
                 nums[pointer] = current
                 pointer += 1
@@ -28,8 +28,8 @@ def main():
     values = [1, 1, 1, 2, 2, 3]
     test = Solution()
     result = test.remove_duplicates(values)
-    print(f'Final result {result=}')
+    print(f"Final result {result=}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

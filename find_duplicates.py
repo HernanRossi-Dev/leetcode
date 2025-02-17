@@ -17,8 +17,8 @@ class Solution:
 def main():
     nums = [1, 2, 3, 3]
     result = Solution.has_duplicate(nums)
-    print(f'{result=}')
+    print(f"{result=}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

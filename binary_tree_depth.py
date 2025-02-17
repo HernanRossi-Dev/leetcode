@@ -35,6 +35,8 @@ class Solution:
         left_node = root.left
         right_node = root.right
         with multiprocessing.Pool(2) as pool:
-            results = pool.starmap(self.traverse_tree, zip([left_node, right_node], repeat(1)))
+            results = pool.starmap(
+                self.traverse_tree, zip([left_node, right_node], repeat(1))
+            )
         l_depth, r_depth = results
         return max(l_depth, r_depth) + 1

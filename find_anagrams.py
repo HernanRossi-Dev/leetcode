@@ -14,9 +14,12 @@ class AnagramGroup:
 
 class Solution:
     """sub_list_map: is a dict {index_in_original_list: [count_map]}"""
+
     _input_list: List[str] = []
 
-    def recursive_check(self, index_list_map: Dict[int, List[Dict]], char_index: int) -> list[AnagramGroup]:
+    def recursive_check(
+        self, index_list_map: Dict[int, List[Dict]], char_index: int
+    ) -> list[AnagramGroup]:
         """
         Recurse through each list in the index_list_map and split the list up into
         the lists that match on the current letter at char_index
@@ -53,7 +56,9 @@ class Solution:
             index_list_map[idx] = [0 for _ in range(25)]
             count_list: List[int] = []
             for char in c_string:
-                index_list_map[idx][CHAR_MAP[char]] = index_list_map[idx][CHAR_MAP[char]] + 1
+                index_list_map[idx][CHAR_MAP[char]] = (
+                    index_list_map[idx][CHAR_MAP[char]] + 1
+                )
             # we now have a dict from index in input string to list of char counts
         anagram_groups = self.recursive_check(index_list_map, 0)
         final_result = [group.anagrams for group in anagram_groups]
@@ -75,4 +80,3 @@ class Solution:
                 anagrams = [c_string]
             pair_map[tuple_list] = anagrams
         return list(pair_map.values())
-

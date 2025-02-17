@@ -6,7 +6,7 @@ class Solution:
     def majority_element_brute_force(self, nums: List[int]) -> int:
         unique_counts = {}
         for item in nums:
-            if value:=unique_counts.get(item):
+            if value := unique_counts.get(item):
                 unique_counts[item] = value + 1
             else:
                 unique_counts[item] = 1
@@ -39,5 +39,5 @@ def main():
     test_runner.majority_element_optimized(test_values)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

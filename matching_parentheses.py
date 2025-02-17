@@ -1,7 +1,7 @@
 import unittest
 from typing import List
 
-MATCHING = {'(': ')', '{': '}', '[': ']'}
+MATCHING = {"(": ")", "{": "}", "[": "]"}
 
 
 class MatchingParentheses:
@@ -41,5 +41,5 @@ class TestSummaryRanges(unittest.TestCase):
         self.assertEqual(result, False)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

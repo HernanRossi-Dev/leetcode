@@ -26,7 +26,7 @@ def main():
     s = "racecar"
     t = "carrace"
     result = Solution.is_anagram(s, t)
-    print(f'{result=}')
+    print(f"{result=}")
 
 
 if __name__ == "__main__":
